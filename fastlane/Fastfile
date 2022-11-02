@@ -30,6 +30,7 @@ platform :android do
                 "android.injected.signing.key.password" => ENV["KEY_PASSWORD"],
             },
             print_command: false,
+            GRADLE_APK_OUTPUT_PATH: "/app/build/outputs/bundle/release",
         )
     end
 
