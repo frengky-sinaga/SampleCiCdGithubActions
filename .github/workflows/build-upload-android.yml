@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
+    name: Build Apk Devel Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,11 +13,8 @@ jobs:
       - name: Set up ruby env
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7.2
+          ruby-version: 3.1.2p20
           bundler-cache: true
-
-      - name: Run tests
-        run: bundle exec fastlane android test
 
       - name: Decode Keystore File
         uses: timheuer/base64-to-file@v1
@@ -40,7 +38,7 @@ jobs:
           versionCode: ${{ env.version_code }}
 
       - name: Build Android release
-        run: bundle exec fastlane android deploy
+        run: bundle exec fastlane android apkDevelRelease
         env:
           KEYSTORE_FILE: ${{ steps.android_keystore.outputs.filePath }}
           STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
