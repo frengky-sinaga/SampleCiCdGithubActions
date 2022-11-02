@@ -15,7 +15,7 @@
 
 default_platform(:android)
 
-gradle_path = './android/gradlew'
+gradle_path = './gradlew'
 
 platform :android do
 
