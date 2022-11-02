@@ -10,14 +10,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: problem
-        run: bundle lock --add-platform x86_64-linux
-
       - name: Set up ruby env
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.2
           bundler-cache: true
+
+      - name: problem
+        run: bundle lock --add-platform x86_64-linux
 
       - name: Decode Keystore File
         uses: timheuer/base64-to-file@v1
