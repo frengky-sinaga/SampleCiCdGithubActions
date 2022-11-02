@@ -15,11 +15,14 @@
 
 default_platform(:android)
 
+gradle_path = './android/gradlew'
+
 platform :android do
 
     desc "Build apk devel release"
     lane :apkDevelRelease do
         gradle(
+            gradle_path: gradle_path,
             task:"assemble",
             flavor: "devel",
             build_type:"Release",
